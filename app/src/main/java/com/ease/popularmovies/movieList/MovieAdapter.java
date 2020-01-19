@@ -1,4 +1,4 @@
-package com.ease.popularmovies;
+package com.ease.popularmovies.movieList;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ease.popularmovies.R;
+import com.ease.popularmovies.data.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

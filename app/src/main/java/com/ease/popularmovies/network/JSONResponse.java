@@ -1,5 +1,6 @@
-package com.ease.popularmovies;
+package com.ease.popularmovies.network;
 
+import com.ease.popularmovies.data.Movie;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

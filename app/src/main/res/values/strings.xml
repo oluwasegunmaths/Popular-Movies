@@ -9,4 +9,10 @@
     <string name="release_date">Release date</string>
     <string name="vote_average">Vote average</string>
     <string name="plot_synopsis">Plot synopsis</string>
+    <string name="sort_by_favorite">Sort by favorites</string>
+    <string name="you_have_no_fav_yet">You have no favorite movies yet</string>
+    <string name="trailers">Trailers</string>
+    <string name="view_comments">View Comments</string>
+    <string name="reviews">Reviews</string>
+    <string name="error">Error loading reviews</string>
 </resources>

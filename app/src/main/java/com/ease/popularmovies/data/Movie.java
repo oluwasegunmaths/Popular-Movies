@@ -1,10 +1,15 @@
-package com.ease.popularmovies;
+package com.ease.popularmovies.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class Movie implements Parcelable {
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
@@ -17,6 +22,15 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
+
+    @PrimaryKey
+    private int id;
+    private int isFavoriteInt = 0;
+
+    @Ignore
+    public Movie() {
+    }
+
     @SerializedName("poster_path")
 
     private String posterUrl;
@@ -33,10 +47,8 @@ public class Movie implements Parcelable {
 
     private String releaseDate;
 
-    public Movie() {
-    }
-
-    public Movie(String posterUrl, String originalTitle, String plotSynopsisOverviewInApi, double userRatingVoteAverageInApi, String releaseDate) {
+    public Movie(int id, String posterUrl, String originalTitle, String plotSynopsisOverviewInApi, double userRatingVoteAverageInApi, String releaseDate) {
+        this.id = id;
         this.posterUrl = posterUrl;
         this.originalTitle = originalTitle;
         this.plotSynopsisOverviewInApi = plotSynopsisOverviewInApi;
@@ -44,12 +56,33 @@ public class Movie implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
+    @Ignore
+
     protected Movie(Parcel in) {
+        id = in.readInt();
         posterUrl = in.readString();
         originalTitle = in.readString();
         plotSynopsisOverviewInApi = in.readString();
         userRatingVoteAverageInApi = in.readDouble();
         releaseDate = in.readString();
+        isFavoriteInt = in.readInt();
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIsFavoriteInt() {
+        return isFavoriteInt;
+    }
+
+    public void setIsFavoriteInt(int isFavoriteInt) {
+        this.isFavoriteInt = isFavoriteInt;
     }
 
     public String getPosterUrl() {
@@ -99,10 +132,13 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(posterUrl);
         dest.writeString(originalTitle);
         dest.writeString(plotSynopsisOverviewInApi);
         dest.writeDouble(userRatingVoteAverageInApi);
         dest.writeString(releaseDate);
+        dest.writeInt(isFavoriteInt);
+
     }
 }
